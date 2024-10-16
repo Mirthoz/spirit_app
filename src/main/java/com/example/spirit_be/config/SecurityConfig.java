@@ -14,13 +14,13 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .requestMatchers("/record/**").permitAll() // Разрешить доступ к /record/**
-        .requestMatchers("/", "/public/**").permitAll() // Разрешить доступ к корневому URL и публичным ресурсам
-        .anyRequest().authenticated() // Остальные запросы требуют аутентификации
+        .requestMatchers("/record/**").permitAll()
+        .requestMatchers("/", "/public/**").permitAll()
+        .anyRequest().authenticated()
         .and()
-        .csrf().disable() // Отключение CSRF для простоты, по желанию
-        .formLogin().disable() // Отключение формы входа, если она не нужна
-        .httpBasic().disable(); // Отключение базовой аутентификации, если не нужна
+        .csrf().disable()
+        .formLogin().disable()
+        .httpBasic().disable();
     return http.build();
   }
 }
